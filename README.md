@@ -2,7 +2,7 @@
 Proyecto del cusro de Aseguramiento de la Calidad de Software
 
 ## Requerimientos
-- php >= 7.2.31 (Instalar Xampp o WampServer)
+- php >= 7.4.29 (Instalar Xampp o WampServer)
 - Composer >= 2.3.10
 - Node >= 16.14.0
 - Angular CLI >= 13.2.6
