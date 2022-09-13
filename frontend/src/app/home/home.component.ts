@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../@core/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  public usuarioLogueado:string = "nouser"
+  constructor(
+    public authService: AuthService
+  ) {
+    if(this.authService.bIslogin)
+    this.usuarioLogueado = <string>localStorage.getItem("user")
+
+  }
 
   ngOnInit(): void {}
+
+  logout(){
+    
+    this.authService.bIslogin = false;
+    localStorage.clear();
+    
+  }
 }
