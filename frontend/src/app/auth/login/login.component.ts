@@ -28,7 +28,10 @@ export class LoginComponent {
         // y ponerlo como header, o en todo caso usar un interceptor de angular
         // el value de aqui trae el access_token (revisar interface
         // UserResponse)
-        console.log(value);
+        
+        this.authService.bIslogin = true;
+        localStorage.setItem("token", JSON.stringify(value.access_token))
+        localStorage.setItem("user", payload.email)
         this.router.navigateByUrl('/');
       },
       error: (error) => {
