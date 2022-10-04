@@ -42,11 +42,13 @@ cd ./Backend
 composer install
 cp .env.example .env
 php artisan key:generate
+php artisan jwt:secret
 ```
 
 ## Configuración de Variables de entorno de Base de datos (.env)
--
-
+```sh
+DB_DATABASE=tienda
+```
 ## Ejecución de Backend
 ```sh
 php artisan serve
