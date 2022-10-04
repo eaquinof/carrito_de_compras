@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\ProductoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,12 +32,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('categoria', 'CategoriaController@index');
 Route::get('categoria/{id}', 'CategoriaController@show');
 Route::post('categoria', 'CategoriaController@store');
-Route::put('categoria/{id}', 'CategoriaController@update');
-Route::put('categoria/{id}', 'CategoriaController@destroy');
+Route::put('modCategoria/{id}', 'CategoriaController@update');
+Route::put('delCategoria/{id}', 'CategoriaController@destroy');
 
 /*EndPoints Producto */
 Route::get('producto', 'ProductoController@index');
 Route::get('producto/{id}', 'ProductoController@show');
 Route::post('producto', 'ProductoController@store');
-Route::put('producto/{id}', 'ProductoController@update');
-Route::put('producto/{id}', 'ProductoController@destroy');
+Route::put('modProducto/{id}', 'ProductoController@update');
+Route::put('delProducto/{id}', 'ProductoController@destroy');
