@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Productos;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -31,7 +32,6 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $params_array = [
-            'id' => $request->id,
             'categoria_id' => $request->categoria_id,
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
@@ -47,7 +47,6 @@ class ProductoController extends Controller
 
         if (!empty($params_array)) {
             $validate = \Validator::make($params_array, [
-                'id' => 'required',
                 'categoria_id' => 'required',
                 'nombre' => 'required',
                 'descripcion' => 'required',
@@ -63,7 +62,7 @@ class ProductoController extends Controller
                     'errors' => $validate->errors()
                 ];
             }else{
-                $producto = Producto::create($params_array);
+                $producto = Productos::create($params_array);
 
                 $data = [
                     'code' => 200,
@@ -83,7 +82,7 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        $producto = Producto::where('id', $id)->get();
+        $producto = Productos::where('id', $id)->get();
 
         $data = [
             'code' => 404,
@@ -111,7 +110,6 @@ class ProductoController extends Controller
     public function update(Request $request, $id)
     {
         $params_array = [
-            'id' => $request->id,
             'categoria_id' => $request->categoria_id,
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
@@ -127,7 +125,6 @@ class ProductoController extends Controller
 
         if (!empty($params_array)) {
             $validate = \Validator::make($params_array, [
-                'id' => 'required',
                 'categoria_id' => 'required',
                 'nombre' => 'required',
                 'descripcion' => 'required',
@@ -144,7 +141,7 @@ class ProductoController extends Controller
                     'errors' => $validate->errors()
                 ];
             }else{
-                $producto = Producto::where('id',$id)->update($params_array);
+                $producto = Productos::where('id',$id)->update($params_array);
 
                 $data = [
                     'code' => 200,
@@ -165,7 +162,7 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        $producto = Producto::where('id', $id)->get();
+        $producto = Productos::where('id', $id)->get();
 
         $data = [
             'code' => 404,

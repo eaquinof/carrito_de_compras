@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorias;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -31,8 +32,7 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         $params_array = [
-            'id' => $request->id,
-            'nombre' => $request->nombre,
+            'nombre' => $request->nombre
         ];
         $data = [
             'code' => 404,
@@ -42,7 +42,6 @@ class CategoriaController extends Controller
 
         if (!empty($params_array)) {
             $validate = \Validator::make($params_array, [
-                'id' => 'required',
                 'nombre' => 'required'
             ]);
             if ($validate->fails()) {
@@ -53,7 +52,7 @@ class CategoriaController extends Controller
                     'errors' => $validate->errors()
                 ];
             }else{
-                $categoria = Categoria::create($params_array);
+                $categoria = Categorias::create($params_array);
 
                 $data = [
                     'code' => 200,
@@ -73,7 +72,7 @@ class CategoriaController extends Controller
      */
     public function show($id)
     {
-        $categoria = Categoria::where('id', $id)->get();
+        $categoria = Categorias::where('id', $id)->get();
 
         $data = [
             'code' => 404,
@@ -101,7 +100,6 @@ class CategoriaController extends Controller
     public function update(Request $request, $id)
     {
         $params_array = [
-            'id' => $request->id,
             'nombre' => $request->nombre
         ];
         $data = [
@@ -112,7 +110,6 @@ class CategoriaController extends Controller
 
         if (!empty($params_array)) {
             $validate = \Validator::make($params_array, [
-                'id' => 'required',
                 'nombre' => 'required'
             ]);
 
@@ -124,7 +121,7 @@ class CategoriaController extends Controller
                     'errors' => $validate->errors()
                 ];
             }else{
-                $categoria = Categoria::where('id',$id)->update($params_array);
+                $categoria = Categorias::where('id',$id)->update($params_array);
 
                 $data = [
                     'code' => 200,
@@ -145,7 +142,7 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        $categoria = Categoria::where('id', $id)->get();
+        $categoria = Categorias::where('id', $id)->get();
 
         $data = [
             'code' => 404,
