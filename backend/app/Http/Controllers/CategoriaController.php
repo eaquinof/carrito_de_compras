@@ -152,7 +152,7 @@ class CategoriaController extends Controller
 
         if (!empty($categoria)) {
 
-            $categoria->delete();
+            $categoria = Categorias::where('id', $id)->delete();
 
             $data = [
                 'code' => 200,

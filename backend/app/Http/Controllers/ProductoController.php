@@ -172,7 +172,7 @@ class ProductoController extends Controller
 
         if (!empty($producto)) {
 
-            $producto->delete();
+            $producto = Productos::where('id', $id)->delete();
 
             $data = [
                 'code' => 200,
