@@ -48,6 +48,8 @@ php artisan jwt:secret
 ## Configuración de Variables de entorno de Base de datos (.env)
 ```sh
 DB_DATABASE=tienda
+
+FILESYSTEM_DRIVER = public
 ```
 ## Ejecución de Backend
 ```sh
@@ -58,6 +60,13 @@ php artisan serve
 ```sh
 cd ./Frontend
 npm install
+```
+## Configuración de variables (enviroment.ts)
+```sh
+    IP = ip donde se ejecuta el backend
+    PORT = Puerto en donde se ejecuta el backend
+  url_api: 'http://IP:PORT/api',
+  url_storage: 'http://IP:PORT/storage',
 ```
 
 ## Ejecución de Frontend
