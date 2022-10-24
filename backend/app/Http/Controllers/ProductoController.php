@@ -90,13 +90,16 @@ class ProductoController extends Controller
             'message' => 'No se han encontrados datos.'
         ];
 
-        if (is_object($producto)) {
+        if (count($producto)>0) {
             $data = [
                 'code' => 200,
                 'status' => 'success',
-                'producto' => $producto
+                'producto' => $producto,
+                'message' => count($producto)
+
             ];
         }
+
         return response()->json($data, $data['code']);
     }
 
@@ -170,7 +173,7 @@ class ProductoController extends Controller
             'message' => 'No se han encontrados datos.',
         ];
 
-        if (!empty($producto)) {
+        if (count($producto)>0) {
 
             $producto = Productos::where('id', $id)->delete();
 

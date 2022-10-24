@@ -80,7 +80,7 @@ class CategoriaController extends Controller
             'message' => 'No se han encontrados datos.'
         ];
 
-        if (is_object($categoria)) {
+        if (count($categoria)>0) {
             $data = [
                 'code' => 200,
                 'status' => 'success',
@@ -108,7 +108,7 @@ class CategoriaController extends Controller
             'message' => 'Nos se han enviado los datos para almacenar'
         ];
 
-        if (!empty($params_array)) {
+        if (count($params_array)>0) {
             $validate = \Validator::make($params_array, [
                 'nombre' => 'required'
             ]);
@@ -150,7 +150,7 @@ class CategoriaController extends Controller
             'message' => 'No se han encontrados datos.',
         ];
 
-        if (!empty($categoria)) {
+        if (count($categoria)>0) {
 
             $categoria = Categorias::where('id', $id)->delete();
 

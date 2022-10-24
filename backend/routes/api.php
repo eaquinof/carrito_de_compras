@@ -41,3 +41,14 @@ Route::get('producto/{id}', 'ProductoController@show');
 Route::post('producto', 'ProductoController@store');
 Route::put('modProducto/{id}', 'ProductoController@update');
 Route::put('delProducto/{id}', 'ProductoController@destroy');
+
+#Ruta para agregar un elemento al carrito
+Route::middleware('auth:api')->post('/addCart','CartDetailController@store');
+#Ruta para eliminar un elemento al carrito
+Route::delete('/delCart','CartDetailController@destroy');
+# Ruta para convertir el carrito en un pedido
+Route::post('/order','CartController@update');
+#Ruta para eliminar un pedido
+Route::delete('/order','CartController@destroy');
+#Ruta para cambiar el status de un pedido
+Route::post('/order/status','CartController@updateStatus');
